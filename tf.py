@@ -31,3 +31,18 @@ def idf(rep):
     for el in dicoidf:
         dicoidf[el] = log(8/dicoidf[el])
     return dicoidf
+
+def tfidf(rep):
+    matrice = []
+    dicoidf = idf(rep)
+    for keys in dicoidf:
+        tab = []
+        for el in list_of_files(rep, 'txt'):
+            with open(rep + "/" + el, 'r') as file:
+                dicotf = tf(file.read())
+                if keys in dicotf:
+                    tab.append(dicotf[keys] * dicoidf[keys])
+                else:
+                    tab.append(0)
+        matrice.append(tab)
+    return matrice
