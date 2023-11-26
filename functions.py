@@ -44,3 +44,10 @@ def polir(txt):
     text = text.replace('-', ' ')
     text = text.replace("'", ' ')
     return text
+
+def discours(tab):
+    for el in tab:
+        with open("speeches/" + el, 'r') as raw:
+            discours = polir(raw.read().lower())
+            with open("cleaned/" + el, 'w') as clean:
+                clean.write(discours)
