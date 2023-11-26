@@ -33,3 +33,14 @@ def assigner(nom):
     elif nom == 'Sarkozy':
         prenom = 'Nicolas'
     return prenom
+
+def polir(txt):
+    text = txt.replace(',', ' ')
+    text = text.replace('?', ' ')
+    text = text.replace('.', ' ')
+    text = text.replace(';', ' ')
+    text = text.replace(':', ' ')
+    text = text.replace('!', ' ')
+    text = text.replace('-', ' ')
+    text = text.replace("'", ' ')
+    return text
