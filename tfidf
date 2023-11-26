@@ -1,1 +1,6 @@
-
+from math import log
+from functions import list_of_files
+def tf(car):
+    cara = car.split(" ")
+    dico = {}
+    for el in cara:
