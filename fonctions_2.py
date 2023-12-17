@@ -1,5 +1,6 @@
 from fonctions import *
 from tf_idf_tfidf import *
+from math import sqrt
 
 def token(car):
     """str -> list
@@ -32,3 +33,25 @@ def vecteur(quest):
         else:
             vecidf.append(0)
     return vecidf
+
+
+def produit_scal(A, B):
+    """ list,list -> float
+    renvoie le produit scalaire de A et B"""
+    somme = 0
+    for i in range(len(A)):
+        somme += A[i] * B[i]
+    return somme
+
+def norme(vecteur):
+    """ list -> float
+    renvoie la norme de vecteur"""
+    somme = 0
+    for el in vecteur:
+        somme += el2
+    return sqrt(somme)
+
+def similaire(A, B):
+    """list,list -> float
+    renvoie l'écart entre les vecteurs A et B"""
+    return produit_scal(A, B)/(norme(A) norme(B))
