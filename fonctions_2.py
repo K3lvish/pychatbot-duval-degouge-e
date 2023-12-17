@@ -70,3 +70,27 @@ def comparer(vec, tabnom):
                 vecmax = veccomp
                 maxi = el
     return maxi
+
+def dictionnaire(quest):
+    """str -> dict
+    renvoie la matrice de quest """
+    dicotf = tf(quest)
+    dicogidf = idf('cleaned')
+    dicoidf = {}
+    for cles in dicogidf:
+        if cles in recherche(quest, dicogidf):
+            dicoidf[cles] = (dicotf[cles] * dicogidf[cles])
+        else:
+            dicoidf[cles] = 0
+    return dicoidf 
+def tfidf_max(quest):
+    """str -> str
+    renvoie le mot de quest avec le plus grand tfidf"""
+    dicotfidf = dictionnaire(quest)
+    clemax = 0
+    maxi = -1
+    for el in dicotfidf:
+        if dicotfidf[el] > maxi:
+            maxi = dicotfidf[el]
+            clemax = el
+    return clemax
