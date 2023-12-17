@@ -19,3 +19,16 @@ def recherche(quest,dico):
         if quest[i] in dico.keys() and quest[i] not in present:
             present.append(quest[i])
     return present
+
+def vecteur(quest):
+    """str -> list
+    renvoie le vecteur tfidf de quest"""
+    tabtf = tf(quest)
+    dicogidf = idf('cleaned')
+    vecidf = []
+    for cles in dicogidf:
+        if cles in recherche(quest, dicogidf):
+            vecidf.append(tabtf[cles] * dicogidf[cles])
+        else:
+            vecidf.append(0)
+    return vecidf
