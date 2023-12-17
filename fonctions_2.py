@@ -9,3 +9,13 @@ def token(car):
         if el == "":
             tabmot.remove(el)
     return tabmot
+
+def recherche(quest,dico):
+    """ str,dict -> list
+    renvoie la liste des mot de quest qui sont présent quelque part dans les textes"""
+    present = []
+    quest = token(quest)
+    for i in range(len(quest)):
+        if quest[i] in dico.keys() and quest[i] not in present:
+            present.append(quest[i])
+    return present
