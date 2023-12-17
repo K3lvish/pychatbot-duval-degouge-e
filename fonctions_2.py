@@ -1,5 +1,5 @@
-from functions import *
-from tfidf import *
+from fonctions import *
+from tf_idf_tfidf import *
 
 def token(car):
     """str -> list
