@@ -48,10 +48,10 @@ def norme(vecteur):
     renvoie la norme de vecteur"""
     somme = 0
     for el in vecteur:
-        somme += el2
+        somme += el*2
     return sqrt(somme)
 
 def similaire(A, B):
     """list,list -> float
     renvoie l'écart entre les vecteurs A et B"""
-    return produit_scal(A, B)/(norme(A) norme(B))
+    return produit_scal(A, B)/(norme(A)*norme(B))
