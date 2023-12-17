@@ -83,6 +83,7 @@ def dictionnaire(quest):
         else:
             dicoidf[cles] = 0
     return dicoidf 
+    
 def tfidf_max(quest):
     """str -> str
     renvoie le mot de quest avec le plus grand tfidf"""
@@ -94,3 +95,15 @@ def tfidf_max(quest):
             maxi = dicotfidf[el]
             clemax = el
     return clemax
+
+def reponse(quest):
+    """str -> str
+    repère la première occurrence du mot avec le plus grand score tfidf de quest
+     et renvoie comme réponse la phrase qui le contient"""
+    pres = comparer(vecteur(quest), liste_fichiers('cleaned', 'txt'))
+    motmax = tfidf_max(quest)
+    with open("speeches/" + pres, 'r') as fichier:
+        discours = fichier.read().split(".")
+        for el in discours:
+            if motmax in el.split(" "):
+                return el
