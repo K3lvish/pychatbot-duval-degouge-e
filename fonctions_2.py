@@ -55,3 +55,18 @@ def similaire(A, B):
     """list,list -> float
     renvoie l'écart entre les vecteurs A et B"""
     return produit_scal(A, B)/(norme(A)*norme(B))
+
+def comparer(vec, tabnom):
+    """list,list -> str
+    renvoie le fichier avec le vecteur le plus proche de vec (vecteur de la question)"""
+    maxi = tabnom[0]
+    vecmax = list()
+    with open("cleaned/" + maxi,'r') as texte:
+        vecmax = similaire(vec, vecteur(texte.read()))
+    for el in tabnom:
+        with open("cleaned/" + el, 'r') as texte:
+            veccomp = similaire(vec, vecteur(texte.read()))
+            if vecmax < veccomp:
+                vecmax = veccomp
+                maxi = el
+    return maxi
