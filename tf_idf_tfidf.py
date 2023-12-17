@@ -1,13 +1,17 @@
-from math import log
+from math import log10
 import os
-def list_of_files(directory, extension):
-    files_names = []
-    for filename in os.listdir(directory):
-        if filename.endswith(extension):
-            files_names.append(filename)
-    return files_names
-    
+def liste_fichiers(dossier, extension):
+    """str,str -> list
+    renvoie la liste des fichiers de directory de même extension que "extension" """
+    nom_fichier = []
+    for fichier in os.listdir(dossier):
+        if fichier.endswith(dossier):
+            nom_fichier.append(fichier)
+    return nom_fichier
+
 def tf(car):
+    """str -> dict
+    renvoie un dictionnaire contenant tout les mots de car en clé et le nombre de fois qu'ils apparaissent en valeur"""
     cara = car.split(" ")
     dico = {}
     for el in cara:
@@ -18,30 +22,34 @@ def tf(car):
     return dico
 
 def idf(rep):
+    """répertoire de fichiers -> dict
+     renvoie un ditionnaire associant à chaque mot son score IDF"""
     dicoidf = {}
-    for el in list_of_files(rep, "txt"):
-        with open(rep + "/" + el, 'r') as file:
-            discours = file.read()
+    for el in liste_fichiers(rep, "txt"):
+        with open(rep + "/" + el, 'r') as fichier:
+            discours = fichier.read()
             dico = tf(discours)
-            for keys in dico:
-                if keys not in dicoidf:
-                    dicoidf[keys] = 1
+            for cles in dico:
+                if cles not in dicoidf:
+                    dicoidf[cles] = 1
                 else:
-                    dicoidf[keys] += 1
+                    dicoidf[cles] += 1
     for el in dicoidf:
-        dicoidf[el] = log(8/dicoidf[el])
+        dicoidf[el] = log10(8/dicoidf[el])
     return dicoidf
 
 def tfidf(rep):
+    """répertoire de fichiers -> list
+    renvoie la matrice tfidf du répertoire"""
     matrice = []
     dicoidf = idf(rep)
-    for keys in dicoidf:
+    for cles in dicoidf:
         tab = []
-        for el in list_of_files(rep, 'txt'):
-            with open(rep + "/" + el, 'r') as file:
-                dicotf = tf(file.read())
-                if keys in dicotf:
-                    tab.append(dicotf[keys] * dicoidf[keys])
+        for el in liste_fichiers(rep, 'txt'):
+            with open(rep + "/" + el, 'r') as fichier:
+                dicotf = tf(fichier.read())
+                if cles in dicotf:
+                    tab.append(dicotf[cles] * dicoidf[cles])
                 else:
                     tab.append(0)
         matrice.append(tab)
