@@ -76,3 +76,14 @@ for el in liste_fichier:
 for cles in dicouse:
     if dicouse[cles] == len(liste_fichier) and cles not in motut:
         print(cles)
+
+quest = input("Posez une question.")
+questiontab = token(quest)
+debut_recurrent = {'Comment':"Eh bien, en ",'Peux-tu':'Aucun problème,','Pourquoi':"C'est parce que","Est-ce" : "Cela dépend : ","Quel":"Il s'agit de","Quelle":"Il s'agit de","Quels":"Ce sont","Quelles" :"Ce sont"}
+if questiontab[0] in debut_recurrent:
+    for cle in debut_recurrent:
+        if questiontab[0] == cle:
+            print(debut_recurrent[cle])
+            print(reponse(quest).lower() + ".")
+else:
+    print(reponse(quest).lower() + ".")
