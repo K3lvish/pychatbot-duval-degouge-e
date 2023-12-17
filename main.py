@@ -1,5 +1,5 @@
 from tf_idf_tfidf import *
-from functions import *
+from fonctions import *
 
 p1 = input("Voulez-vous voir les réponses de la première partie ? Répondez simplement par oui ou non.")
 if p1.lower() == 'oui':
