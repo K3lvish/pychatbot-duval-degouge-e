@@ -44,7 +44,7 @@ if p1.lower() == 'oui':
                 for cles in tf(fichier):
                     if maxi == tf(fichier)[cles] and cles != '':
                         print(cles)
-    print("Les président ayant utilisé le mot 'nation' sont : ")
+    print("Les présidents ayant utilisé le mot 'nation' sont : ")
     maxination = 0
     presnation = 0
     tabpres = []
@@ -59,24 +59,24 @@ for el in liste_fichier:
             if prestf[cles] > maxination:
                 maxination = prestf[cles]
                 presnation = re.sub(r'[0-9]', '', el)[11:-4]
-for el in tabpres:
-    print(el)
-print("Le président ayant le plus utilisé le mot 'nation' est " + presnation)
-
-print("Sakorzy est le premier président à parler d'écologie et de climat.")
-
-dicouse = {}
-for el in liste_fichier:
-    with open('cleaned/' + el , 'r') as file:
-         speech = file.read()
-         for cles in tf(speech):
-            if cles not in dicouse:
-                dicouse[cles] = 1
-            else:
-                dicouse[cles] += 1
-for cles in dicouse:
-    if dicouse[cles] == len(liste_fichier) and cles not in motut:
-        print(cles)
+    for el in tabpres:
+        print(el)
+    print("Le président ayant le plus utilisé le mot 'nation' est " + presnation)
+    
+    print("Sarkozy est le premier président à parler d'écologie et de climat.")
+    
+    dicouse = {}
+    for el in liste_fichier:
+        with open('cleaned/' + el , 'r') as file:
+             speech = file.read()
+             for cles in tf(speech):
+                if cles not in dicouse:
+                    dicouse[cles] = 1
+                else:
+                    dicouse[cles] += 1
+    for cles in dicouse:
+        if dicouse[cles] == len(liste_fichier) and cles not in motut:
+            print(cles)
 
 quest = input("Posez une question.")
 questiontab = token(quest)
