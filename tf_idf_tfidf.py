@@ -3,11 +3,11 @@ import os
 def liste_fichiers(dossier, extension):
     """str,str -> list
     renvoie la liste des fichiers de directory de même extension que "extension" """
-    nom_fichier = []
+    noms_fichier = []
     for fichier in os.listdir(dossier):
-        if fichier.endswith(dossier):
-            nom_fichier.append(fichier)
-    return nom_fichier
+        if fichier.endswith(extension):
+            noms_fichier.append(fichier)
+    return noms_fichier
 
 def tf(car):
     """str -> dict
