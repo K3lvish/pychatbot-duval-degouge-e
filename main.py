@@ -1,10 +1,11 @@
 from tf_idf_tfidf import *
 from fonctions import *
 
+noms_fichier = liste_fichiers("./speeches", "txt")
+discours(noms_fichier)
+
 p1 = input("Voulez-vous voir les réponses de la première partie ? Répondez simplement par oui ou non.")
 if p1.lower() == 'oui':
-    print(dico_pres(noms_fichier))
-    discours(noms_fichier)
     liste_fichier = liste_fichiers('cleaned','txt')
 
     matrice = tfidf('cleaned')
@@ -51,7 +52,7 @@ for el in liste_fichier:
     with open('cleaned/' + el, 'r') as fichiers:
         prestf = tf(fichiers.read())
         nompres = re.sub(r'[0-9]', '', el)[11:-4]
-        if "nation" in prestf.cles():
+        if "nation" in prestf.keys():
             if nompres not in tabpres:
                 tabpres.append(nompres)
         for cles in prestf:
